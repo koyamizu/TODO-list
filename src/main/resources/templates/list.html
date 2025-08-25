@@ -8,9 +8,24 @@
 		<header>
 			<nav>
 				<ul>
-					<li><a>TODO一覧/TODO完了一覧/期限切れ一覧</a></li>
-					<li><a>TODO詳細</a></li>
-					<li><a>TODO新規作成/編集</a></li>
+					<li>
+						<a href="@">TODO一覧</a>
+					</li>
+					<li>
+						<a>TODO完了一覧</a>
+					</li>
+					<li>
+						<a>期限切れ一覧</a>
+					</li>
+					<li>
+						<a>TODO詳細</a>
+					</li>
+					<li>
+						<a>TODO新規作成</a>
+					</li>
+					<li>
+						<a>TODO編集</a>
+					</li>
 				</ul>
 			</nav>
 		</header>
@@ -26,11 +41,11 @@
 						<th>期限</th>
 						<th>状態</th>
 					</tr>
-					<tr th:each="">
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+					<tr th:each="todo : ${todos}">
+						<td><input type="checkbox" ></td>
+						<td><p th:text="${todo.title}"></p></td>
+						<td><p th:text="${todo.date}"></p></td>
+						<td><p th:text="${todo.completed}"></p></td>
 					</tr>
 				</table>
 				<form>
