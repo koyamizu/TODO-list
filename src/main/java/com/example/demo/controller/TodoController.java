@@ -1,48 +1,74 @@
 package com.example.demo.controller;
 
-import java.awt.print.Book;
-import java.util.HashMap;
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequiredArgsConstructor//finalが付けられたフィールドのみを引数とするコンストラクタを自動的に生成する
+@RequiredArgsConstructor
 @RequestMapping("/todos")
 public class TodoController {
-	@GetMapping(params="state=NOT_DONE")
-	public String showPage() {
-		
+	//TODO一覧表示
+	@GetMapping(params = "state=NOT_DONE")
+	public String allTodo() {
+
 	}
-	
-	@GetMapping(params="state=DONE")
-	
-	
+
+	//完了したTODO一覧表示
+	@GetMapping(params = "state=DONE")
+	public String finishedTodo() {
+
+	}
+
+	//期限切れのTODO一覧表示
 	@GetMapping("expired")
-	
-	
-	@GetMapping("{todo_id}")
-	public String deleteOrder(@PathVariable("todo_id") Integer todoId, RedirectAttributes attributes) {
-		
+	public String expiredTodo() {
+
 	}
-	
+
+	//TODO詳細ページ表示
+	@GetMapping("{todo_id}")
+	public String detailTodo(@PathVariable("todo_id") Integer todoId) {
+
+	}
+
+	//TODO新規作成ページ表示
 	@GetMapping("form")
-	
-	
+	public String newTodo() {
+
+	}
+
+	//TODO編集ページ表示
 	@GetMapping("edit/{todo_id}")
-	
-	
-	@PostMapping("")
-	
+	public String editTodo(@PathVariable("todo_id") Integer todoId) {
+
+	}
+
+	//TODO新規作成処理
+	@PostMapping("save")
+	public String save() {
+
+	}
+
+	//TODO編集処理(TODO更新)
+	@PostMapping("update")
+	public String update() {
+
+	}
+
+	//TODO完了処理
+	@PostMapping("done")
+	public String done() {
+
+	}
+
+	//TODO削除処理
+	@PostMapping("delete/{todo_id}")
+	public String delete(@PathVariable("todo_id") Integer todoId) {
+
+	}
 }
