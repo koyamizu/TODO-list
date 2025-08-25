@@ -16,7 +16,7 @@ public class TodoConverter {
 		todoform.setTodo(todo.getTodo());
 		todoform.setDetail(todo.getDetail());
 		todoform.setDeadLine(todo.getDeadLine());
-		todoform.setIsNew(true);
+		todoform.setIsNew(false);
 		
 		return todoform;
 	}
