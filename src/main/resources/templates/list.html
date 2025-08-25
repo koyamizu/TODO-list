@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>TODO一覧</title>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li>
+						<a href="@">TODO一覧</a>
+					</li>
+					<li>
+						<a>TODO完了一覧</a>
+					</li>
+					<li>
+						<a>期限切れ一覧</a>
+					</li>
+					<li>
+						<a>TODO詳細</a>
+					</li>
+					<li>
+						<a>TODO新規作成</a>
+					</li>
+					<li>
+						<a>TODO編集</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<h1 th:if="">TODO一覧</h1>
+			<h1 th:unless="">TODO完了一覧</h1>
+			<h1 th:unless="">期限切れ一覧</h1>
+			<section>
+				<table border="1">
+					<tr>
+						<th>チェック</th>
+						<th>タイトル</th>
+						<th>期限</th>
+						<th>状態</th>
+					</tr>
+					<tr th:each="todo : ${todos}">
+						<td><input type="checkbox" ></td>
+						<td><p th:text="${todo.title}"></p></td>
+						<td><p th:text="${todo.date}"></p></td>
+						<td><p th:text="${todo.completed}"></p></td>
+					</tr>
+				</table>
+				<form>
+					<input type="submit" value="完了">
+				</form>
+			</section>
+		</main>
+	</body>
+</html>
