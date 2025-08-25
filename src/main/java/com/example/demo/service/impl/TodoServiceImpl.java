@@ -7,5 +7,5 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class TodoServiceImpl {
-
+	private final TodoMapper todoMapper;
 }
