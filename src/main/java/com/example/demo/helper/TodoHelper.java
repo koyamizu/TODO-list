@@ -3,9 +3,10 @@ package com.example.demo.helper;
 import com.example.demo.entity.Todo;
 import com.example.demo.form.TodoForm;
 
-public class TodoConverter {
+public class TodoHelper {
 	public static Todo convertTodo(TodoForm todoForm) {
 		Todo todo = new Todo();
+		todo.setTodoId(todoForm.getTodoId());
 		todo.setTodo(todoForm.getTodo());
 		todo.setDetail(todoForm.getDetail());
 		todo.setDeadLine(todoForm.getDeadLine());
@@ -13,6 +14,7 @@ public class TodoConverter {
 	}
 	public static TodoForm convertTodoForm(Todo todo) {
 		TodoForm todoform = new TodoForm();
+		todoform.setTodoId(todo.getTodoId());
 		todoform.setTodo(todo.getTodo());
 		todoform.setDetail(todo.getDetail());
 		todoform.setDeadLine(todo.getDeadLine());

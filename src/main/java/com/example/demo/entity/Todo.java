@@ -11,7 +11,6 @@ public class Todo {
 	private String todo;
 	private String detail;
 	private LocalDateTime deadLine;
-	private State state;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	
