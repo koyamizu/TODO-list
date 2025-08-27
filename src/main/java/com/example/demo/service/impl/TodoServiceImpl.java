@@ -1,6 +1,11 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.Todo;
+import com.example.demo.repository.TodoMapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -8,4 +13,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TodoServiceImpl {
 	private final TodoMapper todoMapper;
+	
+	//全件取得
+	public List<Todo> getAll(){
+		return todoMapper.selectAll();
+	}
 }
