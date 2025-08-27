@@ -20,21 +20,25 @@
 		</nav>
 	</header>
 	<main>
-		<h1 th:if="">TODO新規作成</h1>
-		<h1 th:unress="">TODO編集</h1>
+		<h1 th:if="${todo.id == null}">TODO新規作成</h1>
+		<h1 th:unless="${todo.id == null}">TODO編集</h1>
 		<section>
-			<form th:action="" method="post">
+			<form th:action="${todo.id == null} ? @{/todos/save} : @{/todos/update}" method="post">
+				<input type="hidden" name="id" th:value="${todo.id}">
+				<!-- タイトル -->
 				<label>タイトル
-					<input type="text" name="">
-				</label>
+					<input type="text" name="title" th:value="${todo.title}" required>
+				</label><br>
+				<!-- 期限 -->
 				<label>期限
-					<input type="date" name="">
-				</label>
+					<input type="date" name="date" th:value="${#temporals.format(todo.date,'yyyy-MM-dd')}" required>
+				</label><br>
+				<!-- 詳細 -->
 				<label>詳細
-					<input type="text" name="">
-				</label>
-				
-				<input type="submit" value="作成">
+					<input type="text" name="detail" th:value="${todo.detail}">
+				</label><br>
+				<!-- 作成／更新ボタン -->
+				<input type="submit" th:value="${todo.id == null} ? '作成' : '更新'">
 			</form>
 		</section>
 	</main>

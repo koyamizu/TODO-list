@@ -22,35 +22,35 @@
 	<main>
 		<h1>TODO一覧</h1>
 		<section>
-			<form th:action="@{/todos/delete}" method="post">
-				<table border="1">
-					<tr>
-						<th>タイトル</th>
-						<th>期限</th>
-						<th>編集</th>
-						<th>削除</th>
-					</tr>
-					<tr th:each="todo : ${todos}">
-						<td>
-							<p th:text="${todo.title}"></p>
-						</td>
-						<td>
-							<p th:text="${todo.date}"></p>
-						</td>
-						<td>
-							<input type="button" name="">
-							<!-- 押下すると編集ページへ遷移 -->
-						</td>
-						<td>
-							<input type="checkbox" name="delete">
-						</td>
-					</tr>
-					<tr th:if="${#lists.isEmpty(todos)}">
-						<td colspan="3">TODOはありません</td>
-					</tr>
-				</table>
-				<input type="submit" value="一括削除">
-			</form>
+			<table border="1">
+				<tr>
+					<th>タイトル</th>
+					<th>期限</th>
+					<th>編集</th>
+					<th>削除</th>
+				</tr>
+				<tr th:each="todo : ${todos}">
+					<!-- タイトル -->
+					<td th:text="${todo.title}"></td>
+					<!-- 期限 -->
+					<td th:text="${#temporals.format(todo.date,'yyyy-MM-dd')}"></td>
+					<!-- 編集 -->
+					<td>
+						<form th:action="@{/todos/edit/{id}(id=${todo.id})}" method="get">
+							<input type="hidden" name="id" th:value="${todo.id}">
+							<input type="submit" value="編集">
+						</form>
+					</td>
+					<!-- 削除 -->
+					<td>
+						<form th:action="@{/todos/delete/{id}(id=${todo.id})}" method="post">
+							<input type="hidden" name="id" th:value="${todo.id}">
+							<input type="submit" value="削除">
+						</form>
+					</td>
+				</tr>
+			</table>
+
 		</section>
 	</main>
 </body>
