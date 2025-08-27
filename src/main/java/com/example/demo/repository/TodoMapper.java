@@ -10,7 +10,7 @@ import com.example.demo.entity.Todo;
 public interface TodoMapper{
 	List<Todo> selectAll(); //全件取得
 	Todo selectTodo(Integer todoId); //一件のtodoの取得
-	void updateTodo(Integer todoId,Todo updatedTodo); //todoの編集
+	void updateTodo(Todo updatedTodo); //todoの編集
 	void insertTodo(Todo newTodo); //todoの新規作成 
-	void deleteTodo(Todo targetTodo); //todoの削除
+	void deleteTodo(Integer todoId); //todoの削除
 }
