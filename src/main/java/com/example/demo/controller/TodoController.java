@@ -29,12 +29,6 @@ public class TodoController {
 		return "list";
 	}
 
-	//TODO詳細ページ表示
-	@GetMapping("{todo_id}")
-	public String detailTodo(@PathVariable("todo_id") Integer todoId) {
-
-	}
-
 	//TODO新規作成ページ表示
 	@GetMapping("form")
 	public String newTodo() {
