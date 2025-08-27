@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Todo;
-import com.example.demo.exception.IlligalActionException;
 import com.example.demo.service.impl.TodoServiceImpl;
 
 import lombok.RequiredArgsConstructor;
@@ -18,16 +17,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/todos")
 public class TodoController {
+	private final TodoServiceImpl service;
+	
 	//TODO一覧表示
 	@GetMapping
 	public String allTodo(Model model) {
-		try {
-			//List<Todo> todos = TodoMapper.selectAll();
-			List<Todo> todos = TodoServiceImpl.getAll();
-			model.addAttribute("todos", todos);
-		} catch (IlligalActionException e) {
-			attributes.addFlashAttribute("error_message", e.getMessage());
-		}
+		//List<Todo> todos = TodoMapper.selectAll();
+		List<Todo> todos = service.getAll();
+		model.addAttribute("todos", todos);
 		return "list";
 	}
 
