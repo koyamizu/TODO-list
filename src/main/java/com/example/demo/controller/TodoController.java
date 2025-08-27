@@ -13,14 +13,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/todos")
 public class TodoController {
 	//TODO一覧表示
-	@GetMapping()
+	@GetMapping
 	public String allTodo() {
-
-	}
-
-	//TODO詳細ページ表示
-	@GetMapping("{todo_id}")
-	public String detailTodo(@PathVariable("todo_id") Integer todoId) {
 
 	}
 
