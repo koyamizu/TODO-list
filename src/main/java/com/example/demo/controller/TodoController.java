@@ -1,10 +1,14 @@
 package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.entity.Todo;
+import com.example.demo.service.TodoService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,8 +30,10 @@ public class TodoController {
 
 	//TODO編集ページ表示
 	@GetMapping("edit/{todo_id}")
-	public String editTodo(@PathVariable("todo_id") Integer todoId) {
-
+	public String editTodo(@PathVariable("todo_id") Integer todoId,Model model) {
+		Todo todo = TodoService.get(todoId);
+		model.addAttribute("todo",todo);
+		return "form";
 	}
 
 	//TODO新規作成処理
@@ -38,8 +44,9 @@ public class TodoController {
 
 	//TODO編集処理(TODO更新)
 	@PostMapping("update")
-	public String update() {
-
+	public String update(Todo updatedTodo) {
+		TodoService.update(updatedTodo);
+		return "redirect:list";
 	}
 
 	//TODO削除処理
