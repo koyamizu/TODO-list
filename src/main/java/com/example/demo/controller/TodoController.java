@@ -3,13 +3,14 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Todo;
-import com.example.demo.service.impl.TodoServiceImpl;
+import com.example.demo.service.TodoService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/todos")
 public class TodoController {
-	private final TodoServiceImpl service;
+	private final TodoService service;
 	
 	//TODO一覧表示
 	@GetMapping
