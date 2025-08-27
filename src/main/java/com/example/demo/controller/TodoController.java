@@ -13,20 +13,8 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/todos")
 public class TodoController {
 	//TODO一覧表示
-	@GetMapping(params = "state=NOT_DONE")
+	@GetMapping()
 	public String allTodo() {
-
-	}
-
-	//完了したTODO一覧表示
-	@GetMapping(params = "state=DONE")
-	public String finishedTodo() {
-
-	}
-
-	//期限切れのTODO一覧表示
-	@GetMapping("expired")
-	public String expiredTodo() {
 
 	}
 
@@ -57,12 +45,6 @@ public class TodoController {
 	//TODO編集処理(TODO更新)
 	@PostMapping("update")
 	public String update() {
-
-	}
-
-	//TODO完了処理
-	@PostMapping("done")
-	public String done() {
 
 	}
 

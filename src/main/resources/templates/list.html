@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>TODO一覧</title>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li>
+						<a href="@">TODO一覧</a>
+					</li>
+					<li>
+						<a>TODO新規作成</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<h1 th:if="">TODO一覧</h1>
+			<section>
+				<table border="1">
+					<tr>
+						<th>タイトル</th>
+						<th>期限</th>
+						<th>削除</th>
+					</tr>
+					<tr th:each="todo : ${todos}">
+<!--						↓/todos/detail/{todo_id}へのリンクにしてください-->
+						<td><p th:text="${todo.title}"></p></td>
+						<td><p th:text="${todo.date}"></p></td>
+						<td><p th:text="${todo.completed}"></p></td>
+					</tr>
+				</table>
+			</section>
+		</main>
+	</body>
+</html>
