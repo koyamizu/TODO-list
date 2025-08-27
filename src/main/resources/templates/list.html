@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<title>TODO一覧</title>
-	</head>
-	<body>
-		<header>
-			<nav>
-				<ul>
-					<li>
-						<a href="@">TODO一覧</a>
-					</li>
-					<li>
-						<a>TODO新規作成</a>
-					</li>
-				</ul>
-			</nav>
-		</header>
-		<main>
-			<h1 th:if="">TODO一覧</h1>
-			<section>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TODO一覧</title>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li>
+					<a th:href="@{/todos}">TODO一覧</a>
+				</li>
+				<li>
+					<a th:href="@{/todos/form}">TODO新規作成/編集</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h1>TODO一覧</h1>
+		<section>
+			<form th:action="@{/todos/delete}" method="post">
 				<table border="1">
 					<tr>
 						<th>タイトル</th>
 						<th>期限</th>
+						<th>編集</th>
 						<th>削除</th>
 					</tr>
 					<tr th:each="todo : ${todos}">
-<!--						↓/todos/detail/{todo_id}へのリンクにしてください-->
-						<td><p th:text="${todo.title}"></p></td>
-						<td><p th:text="${todo.date}"></p></td>
-						<td><p th:text="${todo.completed}"></p></td>
+						<td>
+							<p th:text="${todo.title}"></p>
+						</td>
+						<td>
+							<p th:text="${todo.date}"></p>
+						</td>
+						<td>
+							<input type="button" name="">
+							<!-- 押下すると編集ページへ遷移 -->
+						</td>
+						<td>
+							<input type="checkbox" name="delete">
+						</td>
+					</tr>
+					<tr th:if="${#lists.isEmpty(todos)}">
+						<td colspan="3">TODOはありません</td>
 					</tr>
 				</table>
-			</section>
-		</main>
-	</body>
+				<input type="submit" value="一括削除">
+			</form>
+		</section>
+	</main>
+</body>
+
 </html>
