@@ -1,10 +1,16 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.entity.Todo;
+import com.example.demo.exception.IlligalActionException;
+import com.example.demo.service.impl.TodoServiceImpl;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,9 +19,16 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/todos")
 public class TodoController {
 	//TODO一覧表示
-	@GetMapping()
-	public String allTodo() {
-
+	@GetMapping
+	public String allTodo(Model model) {
+		try {
+			//List<Todo> todos = TodoMapper.selectAll();
+			List<Todo> todos = TodoServiceImpl.getAll();
+			model.addAttribute("todos", todos);
+		} catch (IlligalActionException e) {
+			attributes.addFlashAttribute("error_message", e.getMessage());
+		}
+		return "list";
 	}
 
 	//TODO詳細ページ表示
