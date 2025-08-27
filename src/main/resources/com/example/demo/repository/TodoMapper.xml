@@ -5,12 +5,12 @@
  	<!-- 全件取得 -->
  	<select id="selectAll" resultType="com.example.demo.entity.Todo">
  		SELECT
- 			todoId,
+ 			todo_id,
  			todo,
  			detail,
  			deadLine
  		FROM
- 			Todos
+ 			todos
  		;
  	</select>
  
