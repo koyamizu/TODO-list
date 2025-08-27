@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.entity.Todo;
+import com.example.demo.form.TodoForm;
+import com.example.demo.helper.TodoHelper;
 import com.example.demo.service.TodoService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,7 +34,8 @@ public class TodoController {
 	@GetMapping("edit/{todo_id}")
 	public String editTodo(@PathVariable("todo_id") Integer todoId,Model model) {
 		Todo todo = TodoService.get(todoId);
-		model.addAttribute("todo",todo);
+		TodoForm todoForm = TodoHelper.convertTodoForm(todo);
+		model.addAttribute("todoForm",todoForm);
 		return "form";
 	}
 
@@ -44,8 +47,9 @@ public class TodoController {
 
 	//TODO編集処理(TODO更新)
 	@PostMapping("update")
-	public String update(Todo updatedTodo) {
-		TodoService.update(updatedTodo);
+	public String update(TodoForm todoForm) {
+		Todo todo = TodoHelper.convertTodo(todoForm);
+		TodoService.update(todo);
 		return "redirect:list";
 	}
 
