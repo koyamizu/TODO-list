@@ -1,39 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8">
-		<title>TODO一覧</title>
-	</head>
-	<body>
-		<header>
-			<nav>
-				<ul>
-					<li>
-						<a href="@">TODO一覧</a>
-					</li>
-					<li>
-						<a>TODO新規作成</a>
-					</li>
-				</ul>
-			</nav>
-		</header>
-		<main>
-			<h1 th:if="">TODO一覧</h1>
-			<section>
-				<table border="1">
-					<tr>
-						<th>タイトル</th>
-						<th>期限</th>
-						<th>削除</th>
-					</tr>
-					<tr th:each="todo : ${todos}">
-<!--						↓/todos/detail/{todo_id}へのリンクにしてください-->
-						<td><p th:text="${todo.title}"></p></td>
-						<td><p th:text="${todo.date}"></p></td>
-						<td><p th:text="${todo.completed}"></p></td>
-					</tr>
-				</table>
-			</section>
-		</main>
-	</body>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TODO一覧</title>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li>
+					<a th:href="@{/todos}">TODO一覧</a>
+				</li>
+				<li>
+					<a th:href="@{/todos/form}">TODO新規作成/編集</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h1>TODO一覧</h1>
+		<section>
+			<table border="1">
+				<tr>
+					<th>タイトル</th>
+					<th>期限</th>
+					<th>編集</th>
+					<th>削除</th>
+				</tr>
+				<tr th:each="todo : ${todos}">
+					<!-- タイトル -->
+					<td th:text="${todo.title}"></td>
+					<!-- 期限 -->
+					<td th:text="${#temporals.format(todo.date,'yyyy-MM-dd')}"></td>
+					<!-- 編集 -->
+					<td>
+						<a th:href="@{/todos/edit/{todoId}(todoId=${todo.todoId})}">編集</a>
+					</td>
+					<!-- 削除 -->
+					<td>
+						<form th:action="@{/todos/delete/{todoId}(todoId=${todo.todoId})}" method="post">
+							<input type="submit" value="削除">
+						</form>
+					</td>
+				</tr>
+			</table>
+
+		</section>
+	</main>
+</body>
+
 </html>
