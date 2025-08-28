@@ -10,5 +10,14 @@
 			(#{todo},#{detail},#{deadLine})
 		;
 	</insert>
-	
+	 
+ <!-- todoの削除 -->
+ <delete id="deleteTodo">
+	DELETE FROM
+		todos
+	WHERE
+		order_id = #{orderId}
+	;
+ </delete>
+ 
 </mapper>
