@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>フォーム</title>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li>
+					<a th:href="@{/todos}">TODO一覧</a>
+				</li>
+				<li>
+					<a th:href="@{/todos/form}">TODO新規作成/編集</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<h1 th:text="${isNew} ? 'TODO新規作成' : 'TODO編集'"></h1>
+		<section>
+			<form th:object="${todoForm}" th:action="${isNew} ? @{/todos/save} : @{/todos/update}" method="post">
+				<input type="hidden" th:field="*{todoId}">
+				<!-- タイトル -->
+				<label>タイトル
+					<input type="text" th:field="*{title}" required>
+				</label><br>
+				<!-- 期限 -->
+				<label>期限
+					<input type="date" th:field="*{date}" required>
+				</label><br>
+				<!-- 詳細 -->
+				<label>詳細
+					<input type="text" th:field="*{detail}">
+				</label><br>
+				<!-- 作成／更新ボタン -->
+				<input type="submit" th:value="${isNew} ? '作成' : '更新'">
+			</form>
+		</section>
+	</main>
+</body>
+
+</html>
