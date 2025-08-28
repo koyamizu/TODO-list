@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,6 @@ import com.example.demo.entity.Todo;
 import com.example.demo.form.TodoForm;
 import com.example.demo.helper.TodoHelper;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -49,7 +49,7 @@ public class TodoController {
 
 	//TODO編集処理(TODO更新)
 	@PostMapping("update")
-	public String update(@Valid TodoForm todoForm,BindingResult bindingResult, RedirectAttributes attributes) {
+	public String update(@Validated TodoForm todoForm,BindingResult bindingResult, RedirectAttributes attributes) {
 		if(bindingResult.hasErrors()) {
 			return "form";
 		}
