@@ -5,7 +5,7 @@ import java.util.List;
 import com.example.demo.entity.Todo;
 
 public interface TodoService {
-	
+
 	List<Todo> getAll();
 	
 	Todo get(Integer todoId);

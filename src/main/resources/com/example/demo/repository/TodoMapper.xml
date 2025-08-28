@@ -20,4 +20,16 @@
 	;
  </delete>
  
+ 	<!-- 全件取得 -->
+ 	<select id="selectAll" resultType="com.example.demo.entity.Todo">
+ 		SELECT
+ 			todo_id AS todoId,
+ 			todo,
+ 			detail,
+ 			deadLine
+ 		FROM
+ 			todos
+ 		;
+ 	</select>
+ 
 </mapper>
