@@ -14,12 +14,12 @@ public class TodoServiceImpl implements TodoService{
 	private final TodoMapper todoMapper;
 	
 	@Override
-	public Todo edit(Integer todoId) {
-		Todo todo = TodoMapper.selectTodo(todoId);
+	public Todo get(Integer todoId) {
+		Todo todo = todoMapper.selectTodo(todoId);
 		return todo;
 	}
 	
 	public void update(Todo todo) {
-		TodoMapper.update(todo);
+		todoMapper.updateTodo(todo);
 	}
 }
