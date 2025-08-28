@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.entity.Todo;
 import com.example.demo.service.TodoService;
@@ -55,7 +56,9 @@ public class TodoController {
 
 	//TODO削除処理
 	@PostMapping("delete/{todo_id}")
-	public String delete(@PathVariable("todo_id") Integer todoId) {
-
+	public String delete(@PathVariable("todo_id") Integer todoId, RedirectAttributes attributes) {
+		service.deleteTodo(todoId);
+		attributes.addFlashAttribute("deleteMsg", "Todoを削除しました。");
+		return "redirect:/todos";
 	}
 }
