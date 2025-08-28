@@ -45,8 +45,11 @@ public class TodoController {
 
 	//TODO編集ページ表示
 	@GetMapping("edit/{todo_id}")
-	public String editTodo(@PathVariable("todo_id") Integer todoId) {
-
+	public String editTodo(@PathVariable("todo_id") Integer todoId,Model model) {
+		Todo todo = service.get(todoId); //serviceは小樋さん側で宣言しています。
+		TodoForm todoForm = TodoHelper.convertTodoForm(todo);
+		model.addAttribute("todoForm",todoForm);
+		return "form";
 	}
 
 	//TODO新規作成処理
@@ -63,8 +66,14 @@ public class TodoController {
 
 	//TODO編集処理(TODO更新)
 	@PostMapping("update")
-	public String update() {
-
+	public String update(@Validated TodoForm todoForm,BindingResult bindingResult, RedirectAttributes attributes) {
+		if(bindingResult.hasErrors()) {
+			return "form";
+		}
+		Todo todo = TodoHelper.convertTodo(todoForm);
+		service.update(todo);
+		attributes.addFlashAttribute("message", "TODOを更新しました。");
+		return "redirect:/todos";
 	}
 
 	//TODO削除処理
