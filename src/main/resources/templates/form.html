@@ -22,6 +22,8 @@
 	<main>
 		<h1 th:text="${isNew} ? 'TODO新規作成' : 'TODO編集'"></h1>
 		<section>
+<!--			フィールドの名前が違うので、TodoForm.javaを参考に修正してください-->
+<!--			また、各入力フォームで入力エラーがあった時にエラーメッセージを表示させるようにしてください-->
 			<form th:object="${todoForm}" th:action="${isNew} ? @{/todos/save} : @{/todos/update}" method="post">
 				<input type="hidden" th:field="*{todoId}">
 				<!-- タイトル -->
