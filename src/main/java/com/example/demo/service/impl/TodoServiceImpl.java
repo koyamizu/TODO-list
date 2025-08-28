@@ -31,6 +31,7 @@ public class TodoServiceImpl implements TodoService{
 		todoMapper.updateTodo(todo);
   }
 	@Override
+
 	//todoの新規作成
 	public void insertTodo(Todo newTodo) {
 		todoMapper.insertTodo(newTodo);
