@@ -1,10 +1,19 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import com.example.demo.entity.Todo;
 
 public interface TodoService {
+	
+	List<Todo> getAll();
+	
+	Todo get(Integer todoId);
+	
 	void insertTodo(Todo newTodo);//todoの新規作成
-
-public interface TodoService {
+	
 	void deleteTodo(Integer todoId); //todoの削除
+
+	void update(Todo todo);
+
 }
