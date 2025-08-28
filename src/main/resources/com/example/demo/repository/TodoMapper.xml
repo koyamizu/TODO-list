@@ -29,7 +29,7 @@
   	FROM
   		todos
   	WHERE
-  		todoId = #{todoId}
+  		todo_id = #{todoId}
   	;
   </select>
   
@@ -42,7 +42,7 @@
   		,detail = #{detail}
   		,deadLine = #{deadLine}
   	WHERE
-  		todoId = #{todoId}
+  		todo_id = #{todoId}
   	;
   </update>
   
