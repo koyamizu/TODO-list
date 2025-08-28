@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
-public interface TodoService {
+import com.example.demo.entity.Todo;
 
+public interface TodoService {
+	void insertTodo(Todo newTodo);//todoの新規作成
 }
