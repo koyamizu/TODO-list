@@ -28,16 +28,19 @@
 				<input type="hidden" th:field="*{todoId}">
 				<!-- タイトル -->
 				<label>タイトル
-					<input type="text" th:field="*{title}" required>
-				</label><br>
+					<input type="text" th:field="*{todo}" required>
+				</label>
+				<div th:if="${#fields.hasErrors('todo')}" th:errors="*{todo}"></div><br>
 				<!-- 期限 -->
 				<label>期限
-					<input type="date" th:field="*{date}" required>
-				</label><br>
+					<input type="date" th:field="*{deadLine}" required>
+				</label>
+				<div th:if="${#fields.hasErrors('deadLine')}" th:errors="*{deadLine}"></div><br>
 				<!-- 詳細 -->
 				<label>詳細
 					<input type="text" th:field="*{detail}">
-				</label><br>
+				</label>
+				<div th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}"></div><br>
 				<!-- 作成／更新ボタン -->
 				<input type="submit" th:value="${isNew} ? '作成' : '更新'">
 			</form>

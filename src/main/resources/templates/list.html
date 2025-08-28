@@ -21,7 +21,8 @@
 	</header>
 	<main>
 		<h1>TODO一覧</h1>
-<!--		コントローラクラスから送られてきたメッセージを表示させてください-->
+		<!--		コントローラクラスから送られてきたメッセージを表示させてください-->
+			<p th:if="${message}" th:text="${message}"></p>
 		<section>
 			<table border="1">
 				<tr>
