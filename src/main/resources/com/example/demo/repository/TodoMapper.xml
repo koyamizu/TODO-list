@@ -20,4 +20,32 @@
 	;
  </delete>
  
+  <!-- todoの取得 -->
+  <select id="selectTodo">
+  	SELECT
+  		todo
+  		,detail
+  		,deadLine
+  	FROM
+  		todos
+  	WHERE
+  		todoId = #{todoId}
+  	;
+  </select>
+  
+   <!-- todoの取得 -->
+  <update id="updateTodo">
+  	UPDATE
+  		todos
+  	SET
+  		todo = #{todoId}
+  		,detail = #{detail}
+  		,deadLine = #{deadLine}
+  	FROM
+  		todos
+  	;
+  </update>
+  
+    
+ 
 </mapper>
