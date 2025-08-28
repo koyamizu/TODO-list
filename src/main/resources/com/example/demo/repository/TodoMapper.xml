@@ -41,8 +41,8 @@
   		todo = #{todoId}
   		,detail = #{detail}
   		,deadLine = #{deadLine}
-  	FROM
-  		todos
+  	WHERE
+  		todoId = #{todoId}
   	;
   </update>
   
