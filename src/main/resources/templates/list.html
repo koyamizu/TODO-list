@@ -36,9 +36,9 @@
 				</tr>
 				<tr th:each="todo : ${todos}">
 					<!-- タイトル -->
-					<td th:text="${todo.title}"></td>
+					<td th:text="${todo.todo}"></td>
 					<!-- 期限 -->
-					<td th:text="${#temporals.format(todo.date,'yyyy-MM-dd')}"></td>
+					<td th:text="${#temporals.format(todo.deadLine,'yyyy-MM-dd')}"></td>
 					<!-- 編集 -->
 					<td>
 						<a th:href="@{/todos/edit/{todoId}(todoId=${todo.todoId})}">編集</a>
