@@ -14,6 +14,18 @@
  		;
  	</select>
 
+   	<!-- 全件取得 -->
+ 	<select id="selectAll" resultType="com.example.demo.entity.Todo">
+ 		SELECT
+ 			todo_id AS todoId,
+ 			todo,
+ 			detail,
+ 			deadLine
+ 		FROM
+ 			todos
+ 		;
+ 	</select>
+
 	<!-- todoの新規作成 -->
 	<insert id="insertTodo">
 		INSERT INTO
@@ -23,39 +35,41 @@
 		;
 	</insert>
 	 
-	 <!-- todoの削除 -->
-	 <delete id="deleteTodo">
+	<!-- todoの削除 -->
+	<delete id="deleteTodo">
 		DELETE FROM
 			todos
 		WHERE
 			todo_id = #{todoId}
 		;
-	 </delete>
+	</delete>
  
-	  <!-- todoの取得 -->
-	  <select id="selectTodo">
+	<!-- todoの取得 -->
+	<select id="selectTodo" resultType="com.example.demo.entity.Todo">
 	  	SELECT
-	  		todo
+	  		todo_id AS todoId
+	  		,todo
 	  		,detail
 	  		,deadLine
+	  		,created_at AS createdAt
+	  		,updated_at AS updatedAt
 	  	FROM
 	  		todos
 	  	WHERE
 	  		todo_id = #{todoId}
 	  	;
-	  </select>
+	</select>
 	  
-	   <!-- todoの取得 -->
-	  <update id="updateTodo">
+	<!-- todoの更新 -->
+	<update id="updateTodo">
 	  	UPDATE
 	  		todos
 	  	SET
-	  		todo = #{todoId}
+	  		todo = #{todo}
 	  		,detail = #{detail}
 	  		,deadLine = #{deadLine}
 	  	WHERE
 	  		todo_id = #{todoId}
 	  	;
-	  </update>
- 
+	</update>
 </mapper>

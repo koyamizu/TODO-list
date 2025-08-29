@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.example.demo.entity.Todo;
 
+//@Author yuri9652
 @Mapper
 public interface TodoMapper{
 	List<Todo> selectAll(); //全件取得
