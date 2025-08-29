@@ -6,32 +6,21 @@
  	<select id="selectAll" resultType="com.example.demo.entity.Todo">
  		SELECT
  			todo_id AS todoId,
- 			todo,
+ 			title,
  			detail,
  			deadLine
  		FROM
  			todos
- 		;
- 	</select>
-
-   	<!-- 全件取得 -->
- 	<select id="selectAll" resultType="com.example.demo.entity.Todo">
- 		SELECT
- 			todo_id AS todoId,
- 			todo,
- 			detail,
- 			deadLine
- 		FROM
- 			todos
+ 		ORDER BY deadLine
  		;
  	</select>
 
 	<!-- todoの新規作成 -->
 	<insert id="insertTodo">
 		INSERT INTO
-			todos(todo,detail,deadLine)
+			todos(title,detail,deadLine)
 		VALUES
-			(#{todo},#{detail},#{deadLine})
+			(#{title},#{detail},#{deadLine})
 		;
 	</insert>
 	 
@@ -48,7 +37,7 @@
 	<select id="selectTodo" resultType="com.example.demo.entity.Todo">
 	  	SELECT
 	  		todo_id AS todoId
-	  		,todo
+	  		,title
 	  		,detail
 	  		,deadLine
 	  		,created_at AS createdAt
@@ -65,7 +54,7 @@
 	  	UPDATE
 	  		todos
 	  	SET
-	  		todo = #{todo}
+	  		title = #{title}
 	  		,detail = #{detail}
 	  		,deadLine = #{deadLine}
 	  	WHERE

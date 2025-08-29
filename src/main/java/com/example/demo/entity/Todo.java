@@ -10,7 +10,7 @@ import lombok.Data;
 public class Todo {
 
 	private Integer todoId;
-	private String todo;
+	private String title;
 	private String detail;
 	private LocalDate deadLine;
 	private LocalDateTime createdAt;

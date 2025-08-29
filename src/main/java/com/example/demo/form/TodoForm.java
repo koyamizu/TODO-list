@@ -18,7 +18,7 @@ public class TodoForm {
 	private Integer todoId;
 	
 	@NotBlank(message="入力してください")
-	private String todo;
+	private String title;
 	
 	@NotBlank(message="入力してください")
 	private String detail;

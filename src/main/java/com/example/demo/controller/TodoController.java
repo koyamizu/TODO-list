@@ -30,7 +30,6 @@ public class TodoController {
 	 */
 	@GetMapping
 	public String allTodo(Model model) {
-		//List<Todo> todos = TodoMapper.selectAll();
 		List<Todo> todos = service.getAll();
 		model.addAttribute("todos", todos);
 		return "list";
@@ -116,7 +115,7 @@ public class TodoController {
 	@PostMapping("delete/{todo_id}")
 	public String delete(@PathVariable("todo_id") Integer todoId, RedirectAttributes attributes) {
 		service.deleteTodo(todoId);
-		attributes.addFlashAttribute("message", "Todoを削除しました。");
+		attributes.addFlashAttribute("message", "TODOを削除しました。");
 		return "redirect:/todos";
 	}
 }

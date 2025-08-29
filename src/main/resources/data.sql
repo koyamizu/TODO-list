@@ -1,5 +1,5 @@
 INSERT INTO
-  todos(todo,detail,deadline,state)
+  todos(title,detail,deadline,state)
 VALUES
 --　完了
   ('エントリーシートを完成させる','株式会社ちはやテクノロジーサービス応募用。自己PRをブラッシュアップする。','2025-08-15','DONE')

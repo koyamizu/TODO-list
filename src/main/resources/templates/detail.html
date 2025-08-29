@@ -4,54 +4,60 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="author" content="html,thymeleaf : mfukuda-kunren,koyamizu /css : koyamizu">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>TODO詳細</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-	<header>
-		<nav>
-			<ul>
-				<li>
-					<a th:href="@{/todos}">TODO一覧</a>
-				</li>
-				<li>
-					<a th:href="@{/todos/form}">TODO新規作成/編集</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<h1 th:text="TODO詳細"></h1>
-		<section>
-			<table>
-				<tr>
-					<th>タイトル</th>
-					<td th:text="${todo.todo}"></td>
-				</tr>
-				<tr>
-					<th>詳細</th>
-					<td th:text="${todo.detail}"></td>
-				</tr>
-				<tr>
-					<th>期限</th>
-					<td th:text="${#temporals.format(todo.deadLine,'yyyy-MM-dd')}"></td>
-				</tr>
-				<tr>
-					<th>作成日時</th>
-					<td th:text="${#temporals.format(todo.createdAt,'yyyy-MM-dd hh:mm:ss')}"></td>
-				</tr>
-				<tr>
-					<th>更新日時</th>
-					<td th:text="${#temporals.format(todo.updatedAt,'yyyy-MM-dd hh:mm:ss')}"></td>
-				</tr>
-			</table>
-			<a th:href="@{/todos/edit/{todo_id}(todo_id=${todo.todoId})}">編集</a>
-			<a th:href="@{/todos}">戻る</a>
-		</section>
-	</main>
+<body class="bg-light">
+	<div class="container">
+		<header>
+			<nav class="bg-primary navbar navbar-default">
+				<ul class="nav navbar-nav">
+					<li>
+						<a th:href="@{/todos}">TODO一覧</a>
+					</li>
+					<li>
+						<a th:href="@{/todos/form}">TODO新規作成</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<h1 class="text-center">TODO詳細</h1>
+			<div class="container">
+				<table border="1" class="table-bordered todo-detail" style="margin:0 auto; width:60%">
+					<tr>
+						<th >タイトル</th>
+						<td th:text="${todo.title}"></td>
+					</tr>
+					<tr>
+						<th>詳細</th>
+						<td th:text="${todo.detail}"></td>
+					</tr>
+					<tr>
+						<th>期限</th>
+						<td th:text="${#temporals.format(todo.deadLine,'yyyy-MM-dd')}"></td>
+					</tr>
+					<tr>
+						<th>作成日時</th>
+						<td th:text="${#temporals.format(todo.createdAt,'yyyy-MM-dd hh:mm:ss')}"></td>
+					</tr>
+					<tr>
+						<th>更新日時</th>
+						<td th:text="${#temporals.format(todo.updatedAt,'yyyy-MM-dd hh:mm:ss')}"></td>
+					</tr>
+				</table>
+				<div class="text-right" style="margin-right: 20%; margin-top:10px;">
+					<a th:href="@{/todos/edit/{todo_id}(todo_id=${todo.todoId})}" class="btn btn-success">編集</a>
+					<a th:href="@{/todos}" class="btn btn-link">戻る</a>
+				</div>
+			</div>
+		</main>
+	</div>
 </body>
 
 </html>

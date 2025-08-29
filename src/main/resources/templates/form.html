@@ -4,51 +4,71 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="author" content="html,thymeleaf : mfukuda-kunren /css : koyamizu">
-	<title>フォーム</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title th:text="${todoForm.isNew} ? 'TODO新規作成' : 'TODO編集'"></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-	<header>
-		<nav>
-			<ul>
-				<li>
-					<a th:href="@{/todos}">TODO一覧</a>
-				</li>
-				<li>
-					<a th:href="@{/todos/form}">TODO新規作成/編集</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<h1 th:text="${todoForm.isNew} ? 'TODO新規作成' : 'TODO編集'"></h1>
-		<section>
-			<form th:object="${todoForm}" th:action="${todoForm.isNew} ? @{/todos/save} : @{/todos/update}" method="post">
-				<input type="hidden" th:field="*{todoId}">
-				<!-- タイトル -->
-				<label>タイトル
-					<input type="text" th:field="*{todo}">
-				</label>
-				<div th:if="${#fields.hasErrors('todo')}" th:errors="*{todo}"></div><br>
-				<!-- 期限 -->
-				<label>期限
-					<input type="date" th:field="*{deadLine}">
-				</label>
-				<div th:if="${#fields.hasErrors('deadLine')}" th:errors="*{deadLine}"></div><br>
-				<div th:if="${error_message}" th:text="${error_message}"></div>
-				<!-- 詳細 -->
-				<label>詳細
-					<input type="text" th:field="*{detail}">
-				</label>
-				<div th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}"></div><br>
-				<!-- 作成／更新ボタン -->
-				<input type="submit" th:value="${todoForm.isNew} ? '作成' : '更新'">
-			</form>
-		</section>
-	</main>
+<body class="bg-light">
+	<div class="container">
+		<header>
+			<nav class="bg-primary navbar navbar-default">
+				<ul class="nav navbar-nav">
+					<li>
+						<a th:href="@{/todos}">TODO一覧</a>
+					</li>
+					<li class="active">
+						<a th:href="@{/todos/form}">TODO新規作成</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<h1 th:text="${todoForm.isNew} ? 'TODO新規作成' : 'TODO編集'" class="text-center"></h1>
+			<div class="well">
+				<form th:object="${todoForm}" th:action="${todoForm.isNew} ? @{/todos/save} : @{/todos/update}"
+					method="post" class="form-horizontal todo-form">
+					<input type="hidden" th:field="*{todoId}">
+					<!-- タイトル -->
+					<div class="form-group">
+						<label class="control-label col-md-2" for="title">タイトル</label>
+						<div class="col-md-10">
+							<input type="text" id="title" th:field="*{title}" class="form-control">
+							<div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></div>
+						</div>
+					</div>
+					<!-- 期限 -->
+					<div class="form-group">
+						<label class="control-label col-md-2" for="deadLine">期限</label>
+						<div class="col-md-10">
+							<input type="date" id="deadLine" th:field="*{deadLine}">
+							<div th:if="${#fields.hasErrors('deadLine')}" th:errors="*{deadLine}" class="text-danger">
+							</div>
+							<div th:if="${error_message}" th:text="${error_message}" class="text-danger"></div>
+						</div>
+					</div>
+					<!-- 詳細 -->
+					<div class="form-group">
+						<label class="control-label col-md-2" for="detail">詳細</label>
+						<div class="col-md-10">
+							<textarea id="detail" class="form-control" rows="5" th:field="*{detail}"></textarea>
+							<div th:if="${#fields.hasErrors('detail')}" th:errors="*{detail}" class="text-danger"></div>
+							<br>
+						</div>
+					</div>
+					<!-- 作成／更新ボタン -->
+					<div class="form-group">
+					  <div class="col-md-offset-2 col-md-10">
+					    <input type="submit" th:value="${todoForm.isNew} ? '作成' : '更新'" class="btn btn-primary">
+					  </div>
+					</div>
+				</form>
+			</div>
+		</main>
+	</div>
 </body>
 
 </html>

@@ -4,59 +4,60 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="author" content="html,thymeleaf : mfukuda-kunren /css : koyamizu">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>TODO一覧</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li>
-					<a th:href="@{/todos}">TODO一覧</a>
-				</li>
-				<li>
-					<a th:href="@{/todos/form}">TODO新規作成/編集</a>
-				</li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<h1>TODO一覧</h1>
-		<p th:if="${message}" th:text="${message}"></p>
-		<section>
-			<table border="1">
-				<tr>
+	<div class="container">
+		<header>
+			<nav class="bg-primary navbar navbar-default">
+				<ul class="nav navbar-nav">
+					<li class="active">
+						<a th:href="@{/todos}">TODO一覧</a>
+					</li>
+					<li>
+						<a th:href="@{/todos/form}">TODO新規作成</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<h1 class="text-center">TODO一覧</h1>
+			<p th:if="${message}" th:text="${message}" class="text-information text-center"></p>
+			<table border="1" class="table-bordered" style="margin:0 auto; width:60%">
+				<tr class="bg-info">
 					<th>タイトル</th>
 					<th>期限</th>
-					<th>編集</th>
-					<th>削除</th>
+					<th style="width:10%">編集</th>
+					<th style="width:10%">削除</th>
 				</tr>
 				<tr th:each="todo : ${todos}">
 					<!-- タイトル -->
 					<td>
-						<a th:href="@{/todos/{todoId}(todoId=${todo.todoId})}"
-						 th:text="${todo.todo}"></a>
+						<a th:href="@{/todos/{todoId}(todoId=${todo.todoId})}" th:text="${todo.title}"></a>
 					</td>
 					<!-- 期限 -->
 					<td th:text="${#temporals.format(todo.deadLine,'yyyy-MM-dd')}"></td>
 					<!-- 編集 -->
 					<td>
-						<a th:href="@{/todos/edit/{todo_id}(todo_id=${todo.todoId})}">編集</a>
+						<a th:href="@{/todos/edit/{todo_id}(todo_id=${todo.todoId})}"
+							class="btn btn-warning btn-block">編集</a>
 					</td>
 					<!-- 削除 -->
 					<td>
-						<form th:action="@{/todos/delete/{todoId}(todoId=${todo.todoId})}" method="post">
-							<input type="submit" value="削除">
+						<form th:action="@{/todos/delete/{todo-id}(todo-id=${todo.todoId})}" method="post">
+							<input type="submit" value="削除" class="btn btn-danger btn-block">
 						</form>
 					</td>
 				</tr>
 			</table>
-
-		</section>
-	</main>
+		</main>
+	</div>
 </body>
 
 </html>

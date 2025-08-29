@@ -8,7 +8,7 @@ public class TodoHelper {
 	public static Todo convertTodo(TodoForm todoForm) {
 		Todo todo = new Todo();
 		todo.setTodoId(todoForm.getTodoId());
-		todo.setTodo(todoForm.getTodo());
+		todo.setTitle(todoForm.getTitle());
 		todo.setDetail(todoForm.getDetail());
 		todo.setDeadLine(todoForm.getDeadLine());
 		return todo;
@@ -16,7 +16,7 @@ public class TodoHelper {
 	public static TodoForm convertTodoForm(Todo todo) {
 		TodoForm todoform = new TodoForm();
 		todoform.setTodoId(todo.getTodoId());
-		todoform.setTodo(todo.getTodo());
+		todoform.setTitle(todo.getTitle());
 		todoform.setDetail(todo.getDetail());
 		todoform.setDeadLine(todo.getDeadLine());
 		todoform.setIsNew(false);
