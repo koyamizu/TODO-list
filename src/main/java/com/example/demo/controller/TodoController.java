@@ -24,8 +24,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/todos")
 public class TodoController {
 	private final TodoService service;
-	
-	
+
 	/* @Author coffee-kunren
 	 * TODO一覧表示
 	 */
@@ -35,6 +34,18 @@ public class TodoController {
 		List<Todo> todos = service.getAll();
 		model.addAttribute("todos", todos);
 		return "list";
+	}
+
+	/* @Author koyamizu
+	 * TODO詳細
+	 */
+	@GetMapping("{todo_id}")
+	public String showDetail(@PathVariable("todo_id") Integer todoId, Model model) {
+
+		Todo todo = service.get(todoId);
+		model.addAttribute("todo", todo);
+
+		return "detail";
 	}
 
 	/* @Author coffee-kunren
@@ -52,18 +63,27 @@ public class TodoController {
 	 * TODO編集ページ表示
 	 */
 	@GetMapping("edit/{todo_id}")
-	public String editTodo(@PathVariable("todo_id") Integer todoId,Model model) {
+	public String editTodo(@PathVariable("todo_id") Integer todoId, Model model) {
 		Todo todo = service.get(todoId); //serviceはcoffee-kunrenさん側で宣言しています。
 		TodoForm todoForm = TodoHelper.convertTodoForm(todo);
-		model.addAttribute("todoForm",todoForm);
+		model.addAttribute("todoForm", todoForm);
 		return "form";
 	}
 
-	//TODO新規作成処理
+	/* @Author coffee-kunren, koyamizu
+	 * TODO新規作成処理
+	 */
 	@PostMapping("save")
-	public String save(@Validated TodoForm todoForm, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+	public String save(@Validated TodoForm todoForm, BindingResult bindingResult, RedirectAttributes redirectAttributes,
+			Model model) {
 		if (bindingResult.hasErrors()) {
+			todoForm.setIsNew(true);
 			return "form";//入力エラーなら処理せず返す
+		}
+		if (!todoForm.isValid()) {
+			todoForm.setIsNew(true);
+			model.addAttribute("error_message", "今日以降の日付を選択してください");
+			return "form";
 		}
 		Todo newTodo = TodoHelper.convertTodo(todoForm);
 		service.insertTodo(newTodo);
@@ -71,10 +91,17 @@ public class TodoController {
 		return "redirect:/todos";
 	}
 
-	//TODO編集処理(TODO更新)
+	/* @Author yuri9652, koyamizu（例外処理）
+	 * TODO編集処理(TODO更新)
+	 */
 	@PostMapping("update")
-	public String update(@Validated TodoForm todoForm,BindingResult bindingResult, RedirectAttributes attributes) {
-		if(bindingResult.hasErrors()) {
+	public String update(@Validated TodoForm todoForm, BindingResult bindingResult
+			, RedirectAttributes attributes,Model model) {
+		if (bindingResult.hasErrors()) {
+			return "form";
+		}
+		if (!todoForm.isValid()) {
+			model.addAttribute("error_message", "今日以降の日付を選択してください");
 			return "form";
 		}
 		Todo todo = TodoHelper.convertTodo(todoForm);
@@ -83,7 +110,9 @@ public class TodoController {
 		return "redirect:/todos";
 	}
 
-	//TODO削除処理
+	/* @Author coffee-kunren
+	 * TODO削除処理
+	 */
 	@PostMapping("delete/{todo_id}")
 	public String delete(@PathVariable("todo_id") Integer todoId, RedirectAttributes attributes) {
 		service.deleteTodo(todoId);

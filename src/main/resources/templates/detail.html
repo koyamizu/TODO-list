@@ -3,8 +3,8 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="author" content="html,thymeleaf : mfukuda-kunren /css : koyamizu">
-	<title>TODO一覧</title>
+	<meta name="author" content="html,thymeleaf : mfukuda-kunren,koyamizu /css : koyamizu">
+	<title>TODO詳細</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,37 +24,32 @@
 		</nav>
 	</header>
 	<main>
-		<h1>TODO一覧</h1>
-		<p th:if="${message}" th:text="${message}"></p>
+		<h1 th:text="TODO詳細"></h1>
 		<section>
-			<table border="1">
+			<table>
 				<tr>
 					<th>タイトル</th>
-					<th>期限</th>
-					<th>編集</th>
-					<th>削除</th>
+					<td th:text="${todo.todo}"></td>
 				</tr>
-				<tr th:each="todo : ${todos}">
-					<!-- タイトル -->
-					<td>
-						<a th:href="@{/todos/{todoId}(todoId=${todo.todoId})}"
-						 th:text="${todo.todo}"></a>
-					</td>
-					<!-- 期限 -->
+				<tr>
+					<th>詳細</th>
+					<td th:text="${todo.detail}"></td>
+				</tr>
+				<tr>
+					<th>期限</th>
 					<td th:text="${#temporals.format(todo.deadLine,'yyyy-MM-dd')}"></td>
-					<!-- 編集 -->
-					<td>
-						<a th:href="@{/todos/edit/{todo_id}(todo_id=${todo.todoId})}">編集</a>
-					</td>
-					<!-- 削除 -->
-					<td>
-						<form th:action="@{/todos/delete/{todoId}(todoId=${todo.todoId})}" method="post">
-							<input type="submit" value="削除">
-						</form>
-					</td>
+				</tr>
+				<tr>
+					<th>作成日時</th>
+					<td th:text="${#temporals.format(todo.createdAt,'yyyy-MM-dd hh:mm:ss')}"></td>
+				</tr>
+				<tr>
+					<th>更新日時</th>
+					<td th:text="${#temporals.format(todo.updatedAt,'yyyy-MM-dd hh:mm:ss')}"></td>
 				</tr>
 			</table>
-
+			<a th:href="@{/todos/edit/{todo_id}(todo_id=${todo.todoId})}">編集</a>
+			<a th:href="@{/todos}">戻る</a>
 		</section>
 	</main>
 </body>

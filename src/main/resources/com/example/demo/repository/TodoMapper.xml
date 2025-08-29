@@ -35,9 +35,12 @@
 	<!-- todoの取得 -->
 	<select id="selectTodo" resultType="com.example.demo.entity.Todo">
 	  	SELECT
-	  		todo
+	  		todo_id AS todoId
+	  		,todo
 	  		,detail
 	  		,deadLine
+	  		,created_at AS createdAt
+	  		,updated_at AS updatedAt
 	  	FROM
 	  		todos
 	  	WHERE
@@ -45,12 +48,12 @@
 	  	;
 	</select>
 	  
-	<!-- todoの取得 -->
+	<!-- todoの更新 -->
 	<update id="updateTodo">
 	  	UPDATE
 	  		todos
 	  	SET
-	  		todo = #{todoId}
+	  		todo = #{todo}
 	  		,detail = #{detail}
 	  		,deadLine = #{deadLine}
 	  	WHERE
