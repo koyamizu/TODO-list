@@ -25,7 +25,10 @@ import lombok.RequiredArgsConstructor;
 public class TodoController {
 	private final TodoService service;
 	
-	//TODO一覧表示
+	
+	/* @Author coffee-kunren
+	 * TODO一覧表示
+	 */
 	@GetMapping
 	public String allTodo(Model model) {
 		//List<Todo> todos = TodoMapper.selectAll();
@@ -34,7 +37,9 @@ public class TodoController {
 		return "list";
 	}
 
-	//TODO新規作成ページ表示
+	/* @Author coffee-kunren
+	 * TODO新規作成ページ表示
+	 */
 	@GetMapping("form")
 	public String newTodo(Model model) {
 		TodoForm todoForm = new TodoForm();
@@ -43,10 +48,12 @@ public class TodoController {
 		return "form";
 	}
 
-	//TODO編集ページ表示
+	/* @Author yuri9652
+	 * TODO編集ページ表示
+	 */
 	@GetMapping("edit/{todo_id}")
 	public String editTodo(@PathVariable("todo_id") Integer todoId,Model model) {
-		Todo todo = service.get(todoId); //serviceは小樋さん側で宣言しています。
+		Todo todo = service.get(todoId); //serviceはcoffee-kunrenさん側で宣言しています。
 		TodoForm todoForm = TodoHelper.convertTodoForm(todo);
 		model.addAttribute("todoForm",todoForm);
 		return "form";
