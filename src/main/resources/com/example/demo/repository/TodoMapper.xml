@@ -23,39 +23,39 @@
 		;
 	</insert>
 	 
- <!-- todoの削除 -->
- <delete id="deleteTodo">
-	DELETE FROM
-		todos
-	WHERE
-		order_id = #{orderId}
-	;
- </delete>
+	 <!-- todoの削除 -->
+	 <delete id="deleteTodo">
+		DELETE FROM
+			todos
+		WHERE
+			todo_id = #{todoId}
+		;
+	 </delete>
  
-  <!-- todoの取得 -->
-  <select id="selectTodo">
-  	SELECT
-  		todo
-  		,detail
-  		,deadLine
-  	FROM
-  		todos
-  	WHERE
-  		todo_id = #{todoId}
-  	;
-  </select>
-  
-   <!-- todoの取得 -->
-  <update id="updateTodo">
-  	UPDATE
-  		todos
-  	SET
-  		todo = #{todoId}
-  		,detail = #{detail}
-  		,deadLine = #{deadLine}
-  	WHERE
-  		todo_id = #{todoId}
-  	;
-  </update>
+	  <!-- todoの取得 -->
+	  <select id="selectTodo">
+	  	SELECT
+	  		todo
+	  		,detail
+	  		,deadLine
+	  	FROM
+	  		todos
+	  	WHERE
+	  		todo_id = #{todoId}
+	  	;
+	  </select>
+	  
+	   <!-- todoの取得 -->
+	  <update id="updateTodo">
+	  	UPDATE
+	  		todos
+	  	SET
+	  		todo = #{todoId}
+	  		,detail = #{detail}
+	  		,deadLine = #{deadLine}
+	  	WHERE
+	  		todo_id = #{todoId}
+	  	;
+	  </update>
  
 </mapper>
