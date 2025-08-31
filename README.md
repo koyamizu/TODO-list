@@ -18,7 +18,7 @@ TODOリスト
 |5|TODO新規作成処理|/todos/save|POST|
 |6|TODO編集処理|/todos/update|POST|
 |7|TODO削除処理|/todos/delete/{todo_id}|POST|
-# スクリーンショット
+# 画面一覧
 タイトルをクリックすると、詳細画面に遷移します。
 <img width="1287" height="866" alt="スクリーンショット 2025-08-29 16 28 10" src="https://github.com/user-attachments/assets/9315eb38-2620-428a-8d36-2a8dce28c1f1" />
 編集をしてみます。
