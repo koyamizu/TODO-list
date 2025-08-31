@@ -25,7 +25,7 @@ TODOリスト
 <img width="1287" height="866" alt="スクリーンショット 2025-08-29 16 29 22" src="https://github.com/user-attachments/assets/c78461d1-ef6b-4aa5-bc22-1dd861dd57cf" />
 日付を9/1に変更して更新。
 <img width="1287" height="866" alt="スクリーンショット 2025-08-29 16 25 20" src="https://github.com/user-attachments/assets/1199e9b1-84a7-43f3-a9c3-eb7f66976ef7" />
-更新されました。TODOリストは日付の昇順に表示されます。今追加したものを削除してみます。
+更新されました。TODOリストは日付の昇順に表示されます。次に、今更新したものを削除してみます。
 <img width="1287" height="866" alt="スクリーンショット 2025-08-29 16 28 24" src="https://github.com/user-attachments/assets/232bc4d1-efa7-4224-af1b-12bbdc5b7873" />
 削除しました。
 <img width="1287" height="866" alt="スクリーンショット 2025-08-29 15 53 34" src="https://github.com/user-attachments/assets/33bb205d-25bd-43bb-a6a3-07f14fcf3fde" />
