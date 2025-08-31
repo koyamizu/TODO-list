@@ -21,13 +21,13 @@ TODOリスト
 # 画面一覧
 タイトルをクリックすると、詳細画面に遷移します。
 <img width="1287" height="866" alt="スクリーンショット 2025-08-29 16 28 10" src="https://github.com/user-attachments/assets/9315eb38-2620-428a-8d36-2a8dce28c1f1" />
-編集をしてみます。
+詳細ページです。編集をしてみます。
 <img width="1287" height="866" alt="スクリーンショット 2025-08-29 16 29 22" src="https://github.com/user-attachments/assets/c78461d1-ef6b-4aa5-bc22-1dd861dd57cf" />
 日付を9/1に変更して更新。
 <img width="1287" height="866" alt="スクリーンショット 2025-08-29 16 25 20" src="https://github.com/user-attachments/assets/1199e9b1-84a7-43f3-a9c3-eb7f66976ef7" />
-更新されました。TODOリストは日付の昇順に表示されます。
+更新されました。TODOリストは日付の昇順に表示されます。今追加したものを削除してみます。
 <img width="1287" height="866" alt="スクリーンショット 2025-08-29 16 28 24" src="https://github.com/user-attachments/assets/232bc4d1-efa7-4224-af1b-12bbdc5b7873" />
-今追加したものを削除しました。
+削除しました。
 <img width="1287" height="866" alt="スクリーンショット 2025-08-29 15 53 34" src="https://github.com/user-attachments/assets/33bb205d-25bd-43bb-a6a3-07f14fcf3fde" />
 新規作成画面です。何も入力せずに「作成」を押します。
 <img width="1287" height="866" alt="image" src="https://github.com/user-attachments/assets/982029ef-8d16-4a7a-bcf4-ffe4c6f3c99c" />
